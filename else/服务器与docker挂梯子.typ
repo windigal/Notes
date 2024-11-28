@@ -1,5 +1,5 @@
-#import "./utils/template.typ": *
-#import "./utils/diagbox.typ": *
+#import "../utils/template.typ": *
+#import "../utils/diagbox.typ": *
 #set par(justify: true,first-line-indent: 2em)
 #set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
