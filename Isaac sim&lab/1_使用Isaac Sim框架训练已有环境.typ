@@ -12,7 +12,7 @@
 )
 参考文档：#link("https://docs.robotsfan.com/isaaclab/source/overview/reinforcement-learning/rl_existing_scripts.html")
 \
-*注意：第一次训练某个环境，需要挂梯子进行资产下载，之后训练则可以直连，挂梯子教程参考`./服务器与docker挂梯子.typ`*
+*注意：第一次训练某个环境，需要挂梯子进行资产下载，之后训练则可以直连，挂梯子教程参考 ./else/服务器与docker挂梯子.typ*
 
 = *使用Isaac Lab框架训练已有环境*
 Isaac Lab目前继承了四种强化学习训练框架：RL-Games、RSL-RL、SKRL与Stable-Baselines3
