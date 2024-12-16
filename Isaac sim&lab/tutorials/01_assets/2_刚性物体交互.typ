@@ -1,20 +1,20 @@
-#import "../../../utils/template.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#show: show-cn-fakebold
-#set par(justify: true)
-#set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
+#show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
-首次创建日期：2024-12-07
-
-参考文档：#link("https://docs.robotsfan.com/isaaclab/source/tutorials/01_assets/run_rigid_object.html")
-
-*文件路径 `IsaacLab/source/standalone/tutorials/01_assets/run_rigid_object.py` *
-
+#align(center)[#text(size: 19pt, font: "SimHei")[*刚性物体交互*]#text(size: 19pt)[*#footnote[https://docs.robotsfan.com/isaaclab/source/tutorials/01_assets/run_rigid_object.html]*]] 
+#align(center)[#text(size: 14pt)[2024-12-07]]
+本文记录如何在场景中创建刚性物体#footnote[IsaacLab/source/standalone/tutorials/01_assets/run_rigid_object.py]。
 
 = *设置场景*
 创建一个圆锥体刚性物体，此时不使用`ConeCfg`类进行创建，而使用` assets.RigidObjectCfg`类进行封装。该类可以按照某一些生成规则批量生成一些资产
@@ -68,3 +68,4 @@ cone_object.update(sim_dt)
 python ~/IsaacLab/source/standalone/tutorials/01_assets/run_rigid_object.py --livestream 1
 ```
 注意：如果设置`--livestream 1`或者`--livestream 2`，则自动启用`--headless`模式。
+#figure(image("imgs/rigid.gif", width: 60%), numbering: none)

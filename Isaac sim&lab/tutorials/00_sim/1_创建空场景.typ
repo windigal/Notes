@@ -1,19 +1,20 @@
-#import "../../../utils/template.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#show: show-cn-fakebold
-#set par(justify: true)
-#set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
+#show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
-首次创建日期：2024-12-07
-
-参考文档：#link("https://docs.robotsfan.com/isaaclab/source/tutorials/00_sim/create_empty.html")
-
-*文件路径 `IsaacLab/source/standalone/tutorials/00_sim/create_empty.py` *
+#align(center)[#text(size: 19pt, font: "SimHei")[*创建空场景*]#text(size: 19pt)[*#footnote[https://docs.robotsfan.com/isaaclab/source/tutorials/00_sim/create_empty.html]*]] 
+#align(center)[#text(size: 14pt)[2024-12-07]]
+本文记录如何在Isaac Sim中创建一个空场景#footnote[IsaacLab/source/standalone/tutorials/00_sim/create_empty.py]。
 
 = *启动模拟器*
 1. 首先创建一个命令行参数解析器，解析用户提供的参数

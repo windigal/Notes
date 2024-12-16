@@ -1,34 +1,35 @@
-#import "../utils/template.typ": *
-#import "../utils/diagbox.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#show: show-cn-fakebold
-#set par(justify: true)
-#set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
+#show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
-首次创建日期：2024-12-01
-
-先导文档：1\_将BMPC算法移植入Isaac Lab框架中.typ
+#align(center)[#text(size: 19pt, font: ("Times New Roman","SimHei"))[*取消环境terminal*]] 
+#align(center)[#text(size: 14pt)[2024-12-01]]
 
 由于Isaac sim环境存在terminal的情况，BMPC训练效果不佳。本文记录将环境更改为超时结束的方式。
 
-注意：使用环境均为直接式的环境（DirectRLEnv），以cartpole-direct-v0为例
+注意：使用环境均为直接式的环境（`DirectRLEnv`），以`cartpole-direct-v0`为例
 
-1. 在直接式环境类DirectRLEnv的step函数中，修改reset_buf为reset.time_outs，即不考虑环境中断导致的reset
+1. 在直接式环境类`DirectRLEnv`的`step`函数中，修改`reset_buf`为`reset.time_outs`，即不考虑环境中断导致的`reset`
 ```py
 # self.reset_buf = self.reset_terminated | self.reset_time_outs
 self.reset_buf = self.reset_time_outs
 ```
-2. 在Cartpole环境类CartpoleEnv的函数\_get_dones中，修改time_out（只是为了输出整齐）
+2. 在`Cartpole`环境类`CartpoleEnv`的函数`_get_dones`中，修改`time_out`（只是为了输出整齐）
 ```py
 # time_out = self.episode_length_buf >= self.max_episode_length - 1
 time_out = self.episode_length_buf >= self.max_episode_length
 ```
-3. 在BMPC的wrapper文件中，更改BMPCEnvWrapper类的step函数中dones的计算方式
+3. 在BMPC的`wrapper`文件中，更改`BMPCEnvWrapper`类的`step`函数中`dones`的计算方式
 ```py
 # dones = terminated | truncated
 dones  = truncated

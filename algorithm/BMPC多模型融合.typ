@@ -1,18 +1,19 @@
-#import "../utils/template.typ": *
-#import "../utils/diagbox.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#show: show-cn-fakebold
-#set par(justify: true)
-#set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
+#show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
-首次创建日期：2024-12-04
-
-参考文档：#link("https://github.com/nicklashansen/tdmpc2/issues/18")
+#align(center)[#text(size: 19pt)[*BMPC*]#text(size: 19pt, font: "SimHei")[*多模型融合*]#text(size: 19pt)[*#footnote[https://github.com/nicklashansen/tdmpc2/issues/18]*]] 
+#align(center)[#text(size: 14pt)[2024-12-04]]
 
 本文档记录在BMPC上测试多模型参数融合的实施。该issue提出同时运行多个agent，并每隔一定步数将模型参数求平均并更新到所有agent中，可以大大加速训练。以下是根据该思路进行的简单的实施。
 = 加入定时模型存储

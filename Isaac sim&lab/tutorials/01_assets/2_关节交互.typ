@@ -1,21 +1,21 @@
-#import "../../../utils/template.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#show: show-cn-fakebold
-#set par(justify: true)
-#set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
+#show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
-首次创建日期：2024-12-09
+#align(center)[#text(size: 19pt, font: "SimHei")[*关节交互*]#text(size: 19pt)[*#footnote[https://docs.robotsfan.com/isaaclab/source/tutorials/01_assets/run_articulation.html]*]] 
+#align(center)[#text(size: 14pt)[2024-12-09]]
+本文记录Cartpole的场景与模拟#footnote[IsaacLab/source/standalone/tutorials/01_assets/run_articulation.py]。
 
-参考文档：#link("https://docs.robotsfan.com/isaaclab/source/tutorials/01_assets/run_articulation.html")
-
-*文件路径 `IsaacLab/source/standalone/tutorials/01_assets/run_articulation.py` *
-
-本文件记录Cartpole的场景与模拟
 = *Cartpole场景设计*
 Cartpole由地面，光照，以及两个Cartpole系统组成
 == *地面*
@@ -26,8 +26,7 @@ Cartpole由地面，光照，以及两个Cartpole系统组成
 #figure(image("imgs/Light.png"), caption: "Light")
 
 == *Cartpole系统*
-Cartpole系统由两个相同的Xform组成，每个Xform包括slider、cart、pole。
-此外有一个Fixed Joint放置在slider上，cart下有一个Revolute Joint连接pole。
+Cartpole系统由两个相同的Xform组成，每个Xform包括slider、cart、pole。cart与slider中间由一个Prismatic Joint连接，root joint 为作用在slider上的Fixed Joint，cart下有一个Revolute Joint连接pole。
 #figure(image("imgs/Cartpole.png"), caption: "Cartpole")
 
 = *资产配置*
@@ -79,3 +78,4 @@ robot.update(sim_dt)
 python ~/IsaacLab/source/standalone/tutorials/01_assets/run_articulation.py --livestream 1
 ```
 注意：如果设置`--livestream 1`或者`--livestream 2`，则自动启用`--headless`模式。
+#figure(image("imgs/articulation.gif", width: 100%), numbering: none)

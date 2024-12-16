@@ -1,18 +1,20 @@
-#import "../utils/template.typ": *
-#import "../utils/diagbox.typ": *
-#set par(justify: true,first-line-indent: 2em)
-#set par(leading: 1.5em, justify: true,)
-#set text(size: 12pt)
 #import "@preview/cuti:0.2.1": show-cn-fakebold
+#set text(size: 12pt)
 #show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
+#align(center)[#text(size: 19pt, font: ("Times New Roman","SimHei"))[*将BMPC算法移植如Isaac Lab框架中*]#text(size: 19pt)[*#footnote[https://docs.robotsfan.com/isaaclab/source/tutorials/02_scene/create_scene.html]*]] 
+#align(center)[#text(size: 14pt)[2024-11-28]]
 
-首次创建日期：2024-11-28
-\
 历时4天将BMPC算法移植入Isaac lab框架中，下面讲一下移植过程。
 = *将BMPC算法使用pip安装为库*
 在BMPC文件路径下创建一个setup.py文件，内容如下：

@@ -1,20 +1,21 @@
-#import "../../../utils/template.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
-#show: show-cn-fakebold
-#set par(justify: true)
-#set par(leading: 1.5em, justify: true,)
 #set text(size: 12pt)
+#show: show-cn-fakebold
+#set par(leading: 1.5em, justify: true,)
+#set page(numbering: "1", number-align: center, margin: (x: 4em))
+#set heading(numbering: "1.1")
+#set footnote.entry(indent: 0em)
+#show heading.where(level: 1): set block(below: 1.2em)
 #show raw.where(block: true): block.with(
   fill: luma(240),
   inset: 10pt,
   radius: 4pt,
+  width: 100%,
 )
-首次创建日期：2024-12-07
+#align(center)[#text(size: 19pt, font: "SimHei")[*在场景中创建基本物体*]#text(size: 19pt)[*#footnote[https://docs.robotsfan.com/isaaclab/source/tutorials/00_sim/spawn_prims.html]*]] 
+#align(center)[#text(size: 14pt)[2024-12-07]]
 
-参考文档：#link("https://docs.robotsfan.com/isaaclab/source/tutorials/00_sim/spawn_prims.html")
-
-*文件路径 `IsaacLab/source/standalone/tutorials/00_sim/spawn_prims.py` *
-
+本文记录如何在场景中创建基本场景元素和物体#footnote[IsaacLab/source/standalone/tutorials/00_sim/spawn_prims.py]。
 
 = *生成地面平面*
 `sim_utils`提供了许多资产的配置接口，对于地面平面，可以通过`GroundPlaneCfg`类进行配置
