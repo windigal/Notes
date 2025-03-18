@@ -1,5 +1,3 @@
-#import "../../../../utils/template.typ": *
-#import "../../../../utils/diagbox.typ": *
 #import "@preview/cuti:0.2.1": show-cn-fakebold
 #show: show-cn-fakebold
 #set par(justify: true)

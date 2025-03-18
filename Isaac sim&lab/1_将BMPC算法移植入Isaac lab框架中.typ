@@ -12,7 +12,7 @@
   radius: 4pt,
   width: 100%,
 )
-#align(center)[#text(size: 19pt, font: ("Times New Roman","SimHei"))[*将BMPC算法移植如Isaac Lab框架中*]#text(size: 19pt)[*#footnote[https://docs.robotsfan.com/isaaclab/source/tutorials/02_scene/create_scene.html]*]] 
+#align(center)[#text(size: 19pt, font: ("Times New Roman","SimHei"))[*将BMPC算法移植如Isaac Lab框架中*]] 
 #align(center)[#text(size: 14pt)[2024-11-28]]
 
 历时4天将BMPC算法移植入Isaac lab框架中，下面讲一下移植过程。

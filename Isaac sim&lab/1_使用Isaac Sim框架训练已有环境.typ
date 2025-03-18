@@ -22,7 +22,7 @@ Isaac Lab目前继承了四种强化学习训练框架：RL-Games、RSL-RL、SKR
 
 == *Stable-Baselines3*
 ```bash
-conda activat iassclab
+conda activate isaaclab
 python ~/IsaacLab/source/standalone/workflows/sb3/train.py --task Isaac-Cartpole-v0 --headless --device cpu
 ```
 
