@@ -50,6 +50,17 @@ quat_w = math_utils.random_orientation(cube_object.num_instances,
 nodal_state[..., :3] = cube_object.transform_nodal_pos(nodal_state[..., :3], pos_w, quat_w)
 ```
 模拟的每一步，移动第0个和第3个立方体的z坐标，并将他们的网格中的一个顶点进行运动学约束，使其位置严格按照指定的目标位置，而其他网格顶点可受到物理力的影响
+
+#text(blue)[`transform_nodal_pos`基于给定的位置`pos`和旋转四元数`quat`实现节点的平移和旋转，
+```py
+def transform_nodal_pos(
+        self, nodal_pos: torch.tensor, pos: torch.Tensor | None = None, quat: torch.Tensor | None = None
+    ) -> torch.Tensor:
+        mean_nodal_pos = nodal_pos.mean(dim=1, keepdim=True)
+        nodal_pos = nodal_pos - mean_nodal_pos
+        return math_utils.transform_points(nodal_pos, pos, quat) + mean_nodal_pos
+```
+由于四元数本身只能绕世界坐标系的原点旋转，如果想绕物体的中心旋转，需要手动将物体平移到原点，完成旋转操作后再平移回原始位置。]
 ```py
 # update the kinematic target for cubes at index 0 and 3
 # we slightly move the cube in the z-direction by picking the vertex at index 0
