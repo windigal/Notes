@@ -38,7 +38,7 @@ stance_mask[:, 1] = sin_pos < 0
 # Double support phase
 stance_mask[torch.abs(sin_pos) < 0.1] = 1
 ```
-根据当前帧的相位，计算正弦值，根据正弦值判断左脚或右脚支撑，`stance_mask`是一个`[num_envs, 2]`的张量，左脚支撑为1，右脚支撑为0，在换脚支撑的时间内均为1。
+根据当前帧的相位，计算正弦值，根据正弦值判断左脚或右脚支撑，`stance_mask`是一个`[num_envs, 2]`的张量，支撑为1，抬脚为0，在换脚支撑的时间内均为1。一个周期内先右脚抬起，后左脚抬起。
 
 ```python 
 phase = self._get_phase()
